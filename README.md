@@ -28,3 +28,5 @@ D - Right
 Touch and drag to look around.
 
 Created by Red Robo Studios.
+© Red Robo Studios Empire
+https://redrobostudios.pythonanywhere.com/
