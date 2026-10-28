@@ -417,6 +417,66 @@ window.addEventListener(
     }
 );
 
+window.addEventListener("touchstart", (e) => {
+
+    if (!isMobile) return;
+
+    const touch = e.touches[0];
+
+    const tx = touch.clientX;
+    const ty = touch.clientY;
+
+    const x = 120;
+    const y = window.innerHeight - 180;
+
+    mobileForward = false;
+    mobileBack = false;
+    mobileLeft = false;
+    mobileRight = false;
+
+    // UP
+    if (
+        tx > x &&
+        tx < x + 60 &&
+        ty > y - 70 &&
+        ty < y - 10
+    ) {
+        mobileForward = true;
+    }
+
+    // LEFT
+    else if (
+        tx > x - 70 &&
+        tx < x - 10 &&
+        ty > y &&
+        ty < y + 60
+    ) {
+        mobileLeft = true;
+    }
+
+    // DOWN
+    else if (
+        tx > x &&
+        tx < x + 60 &&
+        ty > y &&
+        ty < y + 60
+    ) {
+        mobileBack = true;
+    }
+
+    // RIGHT
+    else if (
+        tx > x + 70 &&
+        tx < x + 130 &&
+        ty > y &&
+        ty < y + 60
+    ) {
+        mobileRight = true;
+    }
+
+});
+
+
 window.addEventListener(
     "touchmove",
     (e) => {
