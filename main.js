@@ -498,43 +498,6 @@ window.addEventListener("mousemove", (e) => {
 //
 
 
-
-
-function animate() {
-
-    requestAnimationFrame(
-        animate
-    );
-
-    const speed = 0.15;
-
-    if (keys["w"] || mobileForward)
-    camera.position.z -= speed;
-
-    if (keys["s"] || mobileBack)
-        //a
-        camera.position.z += speed;
-
-    if (keys["a"] || mobileLeft)
-        //a
-        camera.position.x -= speed;
-
-    if (keys["d"] || mobileRight)
-        //a
-        camera.position.x += speed;
-
-
-    checkPortals();
-
-    if (portalCooldown > 0)
-        portalCooldown--;
-
-    renderer.render(
-        scene,
-        camera
-    );
-}
-
 function drawDPad() {
 
     if (!isMobile) return;
@@ -572,9 +535,46 @@ function drawDPad() {
     ui.fillText("▶", x + 87, y + 40);
 }
 
+function animate() {
+
+    requestAnimationFrame(
+        animate
+    );
+
+    const speed = 0.15;
+
+    if (keys["w"] || mobileForward)
+    camera.position.z -= speed;
+
+    if (keys["s"] || mobileBack)
+        //a
+        camera.position.z += speed;
+
+    if (keys["a"] || mobileLeft)
+        //a
+        camera.position.x -= speed;
+
+    if (keys["d"] || mobileRight)
+        //a
+        camera.position.x += speed;
+
+
+    checkPortals();
+
+    if (portalCooldown > 0)
+        portalCooldown--;
+
+    renderer.render(
+        scene,
+        camera
+    );
+    drawDPad();
+}
+
+
+
 
 animate();
-drawDPad();
 //
 // Resize
 //
