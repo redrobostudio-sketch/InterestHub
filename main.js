@@ -1,6 +1,16 @@
 import * as THREE from 'https://unpkg.com/three@0.166.1/build/three.module.js';
 
 
+const isMobile =
+    /Android|iPhone|iPad|iPod/i.test(
+        navigator.userAgent
+    );
+
+console.log(
+    isMobile
+        ? "Mobile"
+        : "Desktop"
+);
 
 //
 // Scene
@@ -341,11 +351,29 @@ function checkPortals() {
     });
 }
 
+const uiCanvas = document.getElementById("ui");
+const ui = uiCanvas.getContext("2d");
+
+function resizeUI() {
+    uiCanvas.width = window.innerWidth;
+    uiCanvas.height = window.innerHeight;
+}
+
+resizeUI();
+window.addEventListener("resize", resizeUI);
+
+
 //
 // WASD Movement
 //
 
 const keys = {};
+
+let mobileForward = false;
+let mobileBack = false;
+let mobileLeft = false;
+let mobileRight = false;
+
 
 window.addEventListener(
     "keydown",
@@ -469,6 +497,9 @@ window.addEventListener("mousemove", (e) => {
 // Main Loop
 //
 
+
+
+
 function animate() {
 
     requestAnimationFrame(
@@ -477,17 +508,21 @@ function animate() {
 
     const speed = 0.15;
 
-    if (keys["w"])
-        camera.position.z -= speed;
+    if (keys["w"] || mobileForward)
+    camera.position.z -= speed;
 
-    if (keys["s"])
+    if (keys["s"] || mobileBack)
+        //a
         camera.position.z += speed;
 
-    if (keys["a"])
+    if (keys["a"] || mobileLeft)
+        //a
         camera.position.x -= speed;
 
-    if (keys["d"])
+    if (keys["d"] || mobileRight)
+        //a
         camera.position.x += speed;
+
 
     checkPortals();
 
@@ -500,8 +535,46 @@ function animate() {
     );
 }
 
-animate();
+function drawDPad() {
 
+    if (!isMobile) return;
+
+    ui.clearRect(
+        0,
+        0,
+        uiCanvas.width,
+        uiCanvas.height
+    );
+
+    const x = 120;
+    const y = uiCanvas.height - 180;
+
+    ui.fillStyle = "rgba(60,60,60,0.7)";
+
+    // Up
+    ui.fillRect(x, y - 70, 60, 60);
+
+    // Left
+    ui.fillRect(x - 70, y, 60, 60);
+
+    // Down
+    ui.fillRect(x, y, 60, 60);
+
+    // Right
+    ui.fillRect(x + 70, y, 60, 60);
+
+    ui.fillStyle = "white";
+    ui.font = "30px Arial";
+
+    ui.fillText("▲", x + 17, y - 25);
+    ui.fillText("◀", x - 53, y + 40);
+    ui.fillText("▼", x + 17, y + 40);
+    ui.fillText("▶", x + 87, y + 40);
+}
+
+
+animate();
+drawDPad();
 //
 // Resize
 //
