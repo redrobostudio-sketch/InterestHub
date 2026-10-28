@@ -4,6 +4,31 @@ import * as THREE from 'https://unpkg.com/three@0.166.1/build/three.module.js';
 // Scene
 //
 
+function createSign(x, y, z, color) {
+
+    const sign = new THREE.Mesh(
+        new THREE.BoxGeometry(
+            3,
+            1,
+            0.2
+        ),
+        new THREE.MeshStandardMaterial({
+            color
+        })
+    );
+
+    sign.position.set(
+        x,
+        y,
+        z
+    );
+
+    scene.add(sign);
+
+    return sign;
+}
+
+
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0x202040);
 
@@ -118,11 +143,17 @@ function createDoor(
 }
 
 createDoor(0xff8800, -12); // Helldivers
+createSign(-12, 5, -10, 0xff8800);
 createDoor(0x00ff00, -8);  // Books
+createSign(-8, 5, -10, 0x00ff00;
 createDoor(0x00ccff, -4);  // Music
+createSign(-4, 5, -10, 0x00ccff);
 createDoor(0xff00ff, 0);   // Projects
+createSign(0, 5, -10, 0xff00ff);
 createDoor(0xffff00, 4);   // Minecraft
+createSign(4, 5, -10, 0xffff00);
 createDoor(0xff4444, 8);   // Tech
+createSign(8, 5, -10, 0xff4444);
 
 //
 // HELLDIVERS HALL
@@ -491,4 +522,3 @@ window.addEventListener(
 
     }
 );
-
