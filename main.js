@@ -1,5 +1,8 @@
 import * as THREE from 'https://unpkg.com/three@0.166.1/build/three.module.js';
 
+alert("Interest Hub started");
+
+
 //
 // Scene
 //
