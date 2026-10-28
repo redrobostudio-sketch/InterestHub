@@ -148,7 +148,7 @@ function createDoor(
 createDoor(0xff8800, -12); // Helldivers
 createSign(-12, 5, -10, 0xff8800);
 createDoor(0x00ff00, -8);  // Books
-createSign(-8, 5, -10, 0x00ff00;
+createSign(-8, 5, -10, 0x00ff00);
 createDoor(0x00ccff, -4);  // Music
 createSign(-4, 5, -10, 0x00ccff);
 createDoor(0xff00ff, 0);   // Projects
