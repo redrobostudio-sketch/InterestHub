@@ -373,6 +373,14 @@ let mobileForward = false;
 let mobileBack = false;
 let mobileLeft = false;
 let mobileRight = false;
+function stopMobileMovement() {
+
+    mobileForward = false;
+    mobileBack = false;
+    mobileLeft = false;
+    mobileRight = false;
+
+}
 
 
 window.addEventListener(
@@ -418,7 +426,7 @@ window.addEventListener(
 );
 
 window.addEventListener("touchstart", (e) => {
-
+    e.preventDefault();
     if (!isMobile) return;
 
     const touch = e.touches[0];
@@ -501,6 +509,16 @@ window.addEventListener(
         0.7,
         pitch
     )
+);
+
+window.addEventListener(
+    "touchend",
+    stopMobileMovement
+);
+
+window.addEventListener(
+    "touchcancel",
+    stopMobileMovement
 );
 
 
