@@ -1,0 +1,12 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    background: black;
+}
+
+p {
+    top: 10px;
+    left: 10px;
+    color: white;
+    font-family: Arial;
+}
