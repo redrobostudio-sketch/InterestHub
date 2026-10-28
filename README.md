@@ -10,6 +10,15 @@ A 3D virtual environment created by Red Robo Studios.
 - Solo Silo Monument
 - Portal system
 
+## Portals
+
+- Orange = Helldivers, Built
+- Green = Books, Not Built
+- Blue = Music, Not Built
+- Purple = Projects, Not Built
+- Yellow = Minecraft, Not Built
+- Red = Tech, Not Built
+
 ## Planned Features
 
 - Book Dragon Library
