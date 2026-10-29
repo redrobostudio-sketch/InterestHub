@@ -646,7 +646,18 @@ function animate() {
         scene,
         camera
     );
-    drawDPad();
+    // Check if the device has a touchscreen capability (coarse pointer)
+const isTouchDevice = window.matchMedia("(pointer: coarse)").matches;
+    //a
+    if (isTouchDevice) {
+        //a
+        console.log("This is likely a mobile device or tablet with a touchscreen.");
+        drawDPad();
+    } else {
+        //a
+        console.log("This is likely a desktop or laptop controlled with a mouse/trackpad.");
+    }
+
 }
 
 
